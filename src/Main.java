@@ -1,6 +1,12 @@
 import java.util.Scanner;
 
 public class Main {
+    static int [] safeStartDaysArr = new int [10];
+    static int [] safeStartMonthsArr = new int [10];
+    static int [] safeStartYearsArr = new int [10];
+    static int [] safeEndDaysArr = new int [10];
+    static int [] safeEndMonthsArr = new int [10];
+    static int [] safeEndYearsArr = new int [10];
     public static void printWelcomeMessage() {
         System.out.println("------------------------------------------------------------------------------------------------------");
         System.out.println("                                       WELCOME TO HAPPY HOTEL!");
@@ -23,6 +29,7 @@ public class Main {
         System.out.println("6. Update a room.");
         System.out.println("------------------------------------------------------------------------------------------------------");
     }
+
     public static boolean askIfTheUserWantsToContinue(){
         Scanner scan = new Scanner(System.in);
         System.out.print("Do you want to continue the program(true or false)? ");
@@ -65,20 +72,22 @@ public class Main {
             case 9 -> arrRooms[8] = "reserved";
             case 10 -> arrRooms[9] = "reserved";
         }
-        makeAReservationDate(arrRooms);
+        makeAReservationDate(roomNumberReserve);
         System.out.println("Room No:" + roomNumberReserve + " is successfully " + arrRooms[roomNumberReserve - 1]);
     }
 
-
-    public static void makeAReservationDate(String[] arrRooms) {
+    public static void makeAReservationDate(int roomNumberReserve) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please write the start of the reservation! ");
         System.out.print("Enter the start day: ");
         int startDate = scan.nextInt();
+        safeStartDaysArr[roomNumberReserve-1]=startDate;
         System.out.print("Enter the month: ");
         int startMonth = scan.nextInt();
+        safeStartMonthsArr[roomNumberReserve-1]=startMonth;
         System.out.print("Enter the year: ");
         int startYear = scan.nextInt();
+        safeStartYearsArr[roomNumberReserve-1]=startYear;
         System.out.println("Please write the end of the reservation! ");
         System.out.print("Enter the end day: ");
         int endDate = scan.nextInt();
@@ -91,7 +100,7 @@ public class Main {
             System.out.println("INVALID INPUT!");
             System.out.println("----------------------------");
             System.out.println("Now enter the dates again: ");
-            makeAReservationDate(arrRooms);
+            makeAReservationDate(roomNumberReserve);
         } else {
             System.out.println("The start day is: " + startDate + "/" + startMonth + "/" + startYear + "   12:00h.");
             System.out.println("The end day is: " + endDate + "/" + endMonth + "/" + endYear + "   12:00h.");
@@ -130,8 +139,7 @@ public class Main {
         }
     }
 
-
-    public static void printStats(){
+    public static void printStats(int [] safeStartDaysArr){
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter the start day: ");
         int startDateCheck = scan.nextInt();
@@ -146,10 +154,16 @@ public class Main {
         System.out.print("Enter the year: ");
         int endYearCheck = scan.nextInt();
 
+        for(int i = 0; i< safeStartDaysArr.length; i++){
+            while(safeStartDaysArr[i]!=0) {
+                if ((startDateCheck <= safeStartDaysArr[i] && startMonthCheck <= safeStartMonthsArr[i] &&
+                        startYearCheck <= safeStartYearsArr[i])){
+                    System.out.println("Room No: " + (i + 1) + " is used.");
+                }
+            }
+        }
+
     }
-
-
-
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -165,7 +179,7 @@ public class Main {
                 case 1 -> makeAReservation(arrRooms);
                 case 2 -> checkForEmptyRooms(arrRooms);
                 case 3 -> cancelAReservation(arrRooms);
-                case 4 -> printStats();
+                case 4 -> printStats(safeStartDaysArr);
             }
             askIfTheUserWantsToContinue = askIfTheUserWantsToContinue();
         } while (askIfTheUserWantsToContinue == true);
