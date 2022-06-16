@@ -1,4 +1,7 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Main {
     static int [] safeStartDaysArr = new int [10];
@@ -91,10 +94,13 @@ public class Main {
         System.out.println("Please write the end of the reservation! ");
         System.out.print("Enter the end day: ");
         int endDate = scan.nextInt();
+        safeEndDaysArr[roomNumberReserve-1] = endDate;
         System.out.print("Enter the month: ");
         int endMonth = scan.nextInt();
+        safeEndMonthsArr[roomNumberReserve-1] = endMonth;
         System.out.print("Enter the year: ");
         int endYear = scan.nextInt();
+        safeEndYearsArr[roomNumberReserve-1] = endYear;
         if ((startYear > endYear) || (startYear == endYear && startMonth > endMonth) || (startYear == endYear && startMonth == endMonth && startDate > endDate)) {
             System.out.println("----------------------------");
             System.out.println("INVALID INPUT!");
@@ -139,7 +145,7 @@ public class Main {
         }
     }
 
-    public static void printStats(int [] safeStartDaysArr){
+    public static void printStats(int [] safeStartDaysArr) throws ParseException {
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter the start day: ");
         int startDateCheck = scan.nextInt();
@@ -153,19 +159,51 @@ public class Main {
         int endMonthCheck = scan.nextInt();
         System.out.print("Enter the year: ");
         int endYearCheck = scan.nextInt();
-
-        for(int i = 0; i< safeStartDaysArr.length; i++){
-            while(safeStartDaysArr[i]!=0) {
-                if ((startDateCheck <= safeStartDaysArr[i] && startMonthCheck <= safeStartMonthsArr[i] &&
-                        startYearCheck <= safeStartYearsArr[i])){
-                    System.out.println("Room No: " + (i + 1) + " is used.");
+        Date d1 = null;
+        Date d2 = null;
+        Date d1Check = null;
+        Date d2Check = null;
+        long diff=0;
+        long diffDays=0;
+        System.out.println("---------------------------------------------");
+        System.out.println("                  STATS                      ");
+        System.out.println("---------------------------------------------");
+        for(int i = 0; i< safeStartDaysArr.length; i++) {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                d1 = format.parse(safeStartDaysArr[i]+"/"+safeStartMonthsArr[i]+"/"+safeStartYearsArr[i]);
+                d2 = format.parse(safeEndDaysArr[i]+"/"+safeEndMonthsArr[i]+"/"+safeEndYearsArr[i]);
+                d1Check = format.parse(startDateCheck+"/"+startMonthCheck+"/"+startYearCheck);
+                d2Check = format.parse(endDateCheck+"/"+endMonthCheck+"/"+endYearCheck);
+                if(safeStartDaysArr[i]==0){
+                    System.out.println("Room No: "+(i+1)+" is not used in this period");
+                } else if(d1Check.compareTo(d1)<=0 && d2Check.compareTo(d2)>=0) {
+                    diff = d2.getTime() - d1.getTime();
+                    diffDays = diff / (24 * 60 * 60 * 1000);
+                    if(diffDays>0) {
+                        System.out.println("Room No: " + (i + 1) + " is used for " + (diffDays + 1) + " days in this period.");
+                    }
+                } else if(d1Check.compareTo(d1)>=0 && d2Check.compareTo(d2)<=0){
+                    diff = d2Check.getTime() - d1Check.getTime();
+                    diffDays = diff / (24 * 60 * 60 * 1000);
+                    if(diffDays>0) {
+                        System.out.println("Room No: " + (i + 1) + " is used for " + (diffDays + 1) + " days in this period.");
+                    }
+                } else if(d1.compareTo(d1Check)<=0 && d2.compareTo(d2Check)<=0){
+                    diff = d2.getTime() - d1Check.getTime();
+                    diffDays = diff / (24 * 60 * 60 * 1000);
+                    if(diffDays>0) {
+                        System.out.println("Room No: " + (i + 1) + " is used for " + (diffDays + 1) + " days in this period.");
+                    }
+                } else if(d1Check.compareTo(d1)<=0 && d2Check.compareTo(d2)<=0){
+                    diff = d2Check.getTime() - d1.getTime();
+                    diffDays = diff / (24 * 60 * 60 * 1000);
+                    if(diffDays>0) {
+                        System.out.println("Room No: " + (i + 1) + " is used for " + (diffDays + 1) + " days in this period.");
+                    }
                 }
             }
         }
-
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Scanner scan = new Scanner(System.in);
         String[] arrRooms = new String[10];
         printWelcomeMessage();
