@@ -2,7 +2,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.Date;
-
+import java.util.ArrayList;
 public class Main {
     static String[] arrRooms = new String[10];
     static int[] safeStartDaysArr = new int[10];
@@ -13,14 +13,13 @@ public class Main {
     static int[] safeEndYearsArr = new int[10];
     static int[] numberOfBedsArr = {1, 1, 1, 1, 2, 2, 2, 2, 3, 3};
     static int roomNumberReserve;
-
     static String [] additionalServices = new String [10];
+
     public static void printWelcomeMessage() {
         System.out.println("------------------------------------------------------------------------------------------------------");
         System.out.println("                                       WELCOME TO HAPPY HOTEL!");
         System.out.println("------------------------------------------------------------------------------------------------------");
     }
-
     public static void printTheSections() {
         System.out.println("Please select what you want to do(1-6): ");
         System.out.println("------------------------------------------------------------------------------------------------------");
@@ -56,17 +55,22 @@ public class Main {
         }
     }
 
-    public static void checkForEmptyRooms(String[] arrRooms) {
+    public static void checkForEmptyRooms(String[] arrRooms) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date date = new java.util.Date();
+        System.out.println(date);
         for (int i = 0; i < arrRooms.length; i++) {
-            if (arrRooms[i].equals("empty")) {
-                System.out.println("Room No:" + (i + 1) + " is " + arrRooms[i]);
+            Date d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
+            Date d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
+            if (!(date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0)) {
+                System.out.println("Room No:" + (i + 1) + " is " + "currently empty.");
             }
         }
     }
 
     public static void makeAReservation(String[] arrRooms) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Please write the room's number you want to reserve: ");
+        System.out.print("Please write the room's number you want to reserve(1-10): ");
         roomNumberReserve = scan.nextInt();
         switch (roomNumberReserve) {
             case 1 -> arrRooms[0] = "reserved";
@@ -175,21 +179,23 @@ public class Main {
         int endMonthCheck = scan.nextInt();
         System.out.print("Enter the end year: ");
         int endYearCheck = scan.nextInt();
-        Date d1 = null;
-        Date d2 = null;
-        Date d1Check = null;
-        Date d2Check = null;
         long diff = 0;
         long diffDays = 0;
+        ArrayList<Date> datesStartRoom1 = new ArrayList<Date>();
+        ArrayList<Date> datesEndRoom1 = new ArrayList<Date>();
+        ArrayList<Date> datesStartRoom2 = new ArrayList<Date>();
+        ArrayList<Date> datesEndRoom2 = new ArrayList<Date>();
+        ArrayList<Date> datesStartRoom3 = new ArrayList<Date>();
+        ArrayList<Date> datesEndRoom3 = new ArrayList<Date>();
         System.out.println("---------------------------------------------");
         System.out.println("                  STATS                      ");
         System.out.println("---------------------------------------------");
         for (int i = 0; i < safeStartDaysArr.length; i++) {
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-            d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-            d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-            d1Check = format.parse(startDateCheck + "/" + startMonthCheck + "/" + startYearCheck);
-            d2Check = format.parse(endDateCheck + "/" + endMonthCheck + "/" + endYearCheck);
+            Date d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
+            Date d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
+            Date d1Check = format.parse(startDateCheck + "/" + startMonthCheck + "/" + startYearCheck);
+            Date d2Check = format.parse(endDateCheck + "/" + endMonthCheck + "/" + endYearCheck);
             if (safeStartDaysArr[i] == 0) {
                 System.out.println("Room No: " + (i + 1) + " is not used in this period");
             } else if (d1Check.compareTo(d1) <= 0 && d2Check.compareTo(d2) >= 0) {
