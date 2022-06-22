@@ -181,12 +181,6 @@ public class Main {
         int endYearCheck = scan.nextInt();
         long diff = 0;
         long diffDays = 0;
-        ArrayList<Date> datesStartRoom1 = new ArrayList<Date>();
-        ArrayList<Date> datesEndRoom1 = new ArrayList<Date>();
-        ArrayList<Date> datesStartRoom2 = new ArrayList<Date>();
-        ArrayList<Date> datesEndRoom2 = new ArrayList<Date>();
-        ArrayList<Date> datesStartRoom3 = new ArrayList<Date>();
-        ArrayList<Date> datesEndRoom3 = new ArrayList<Date>();
         System.out.println("---------------------------------------------");
         System.out.println("                  STATS                      ");
         System.out.println("---------------------------------------------");
