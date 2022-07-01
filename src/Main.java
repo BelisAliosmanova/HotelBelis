@@ -59,145 +59,20 @@ public class Main {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date date = new java.util.Date();
         Date d1, d2;
-        String roomCheckNow="empty";
-        for(int i=0; i<100; i+=10) {
-                if (safeStartDaysArr[i] != 0) {
-                    d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                    d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
+        for(int i=0; i<10; i++) {
+            String roomCheckNow="empty";
+            for(int j= i; j<100; j+=10) {
+                if (safeStartDaysArr[j] != 0) {
+                    d1 = format.parse(safeStartDaysArr[j] + "/" + safeStartMonthsArr[j] + "/" + safeStartYearsArr[j]);
+                    d2 = format.parse(safeEndDaysArr[j] + "/" + safeEndMonthsArr[j] + "/" + safeEndYearsArr[j]);
                     if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
                         roomCheckNow = "reserved";
                         break;
                     }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 1 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=1; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
+                } else {
+                    System.out.println("Room No: "+ (i+1) +" is currently -> " + roomCheckNow); break;
                 }
             }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 2 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=2; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 3 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=3; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 4 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=4; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 5 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=5; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 6 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=6; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 7 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=7; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 8 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=8; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 9 is currently -> " + roomCheckNow);
-        }
-        roomCheckNow="empty";
-        for(int i=9; i<100; i+=10) {
-            if (safeStartDaysArr[i] != 0) {
-                d1 = format.parse(safeStartDaysArr[i] + "/" + safeStartMonthsArr[i] + "/" + safeStartYearsArr[i]);
-                d2 = format.parse(safeEndDaysArr[i] + "/" + safeEndMonthsArr[i] + "/" + safeEndYearsArr[i]);
-                if (date.compareTo(d1) >= 0 && date.compareTo(d2) <= 0) {
-                    roomCheckNow = "reserved";
-                    break;
-                }
-            }
-        }
-        if(roomCheckNow.equals("empty")) {
-            System.out.println("Room No: 10 is currently -> " + roomCheckNow);
         }
     }
 
@@ -205,26 +80,17 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.print("Please write the room's number you want to reserve(1-10): ");
         roomNumberReserve = scan.nextInt();
-        makeAReservationDate(arrRooms);
-        switch (roomNumberReserve) {
-            case 1 -> arrRooms[0] = "reserved";
-            case 2 -> arrRooms[1] = "reserved";
-            case 3 -> arrRooms[2] = "reserved";
-            case 4 -> arrRooms[3] = "reserved";
-            case 5 -> arrRooms[4] = "reserved";
-            case 6 -> arrRooms[5] = "reserved";
-            case 7 -> arrRooms[6] = "reserved";
-            case 8 -> arrRooms[7] = "reserved";
-            case 9 -> arrRooms[8] = "reserved";
-            case 10 -> arrRooms[9] = "reserved";
-            default -> {
-                System.out.println("-----------------------------------------------------");
-                System.out.println("INVALID INPUT! THERE ISN'T A ROOM WITH WHIT NUMBER!");
-                System.out.println("Now enter the information again!");
-                System.out.println("-----------------------------------------------------");
-                makeAReservation(arrRooms);
-            }
+        if (roomNumberReserve < 1 || roomNumberReserve > 10) {
+            System.out.println("-----------------------------------------------------");
+            System.out.println("INVALID INPUT! THERE ISN'T A ROOM WITH WHIT NUMBER!");
+            System.out.println("Now enter the information again!");
+            System.out.println("-----------------------------------------------------");
+            makeAReservation(arrRooms);
+            return;
         }
+        makeAReservationDate(arrRooms);
+
+        arrRooms[roomNumberReserve - 1] = "reserved";
     }
 
     public static void makeAReservationDate(String[] arrRooms) throws ParseException {
@@ -258,6 +124,10 @@ public class Main {
                 if ((d1.compareTo(d3)<0 && d1.compareTo(d4)<0 && d2.compareTo(d3)<0 && d2.compareTo(d4)<0) || (d1.compareTo(d3)>0 && d1.compareTo(d4)>0 && d2.compareTo(d3)>0 && d2.compareTo(d4)>0)) {
                     continue1 = true;
                 } else {
+                    System.out.println("================================================");
+                    System.out.println("  INVALID DATE INPUT!");
+                    System.out.println("This room is already reserved on this dates!");
+                    System.out.println("================================================");
                     continue1 = false; break;
                 }
             }
@@ -265,94 +135,31 @@ public class Main {
         if (continue1 == true) {
             if ((startYear > endYear) || (startYear == endYear && startMonth > endMonth) || (startYear == endYear && startMonth == endMonth && startDate > endDate)) {
                 System.out.println("----------------------------");
-                System.out.println("INVALID DATE INPUT!");
+                System.out.println("    INVALID DATE INPUT!");
                 System.out.println("----------------------------");
                 System.out.println("Now enter the dates again: ");
                 makeAReservationDate(arrRooms);
-            } else if (safeStartDaysArr[roomNumberReserve - 1] == 0) {
-                safeStartDaysArr[roomNumberReserve - 1] = startDate;
-                safeStartMonthsArr[roomNumberReserve - 1] = startMonth;
-                safeStartYearsArr[roomNumberReserve - 1] = startYear;
-                safeEndDaysArr[roomNumberReserve - 1] = endDate;
-                safeEndMonthsArr[roomNumberReserve - 1] = endMonth;
-                safeEndYearsArr[roomNumberReserve - 1] = endYear;
-            } else if (safeStartDaysArr[roomNumberReserve - 1] != 0) {
-                if (safeStartDaysArr[roomNumberReserve + 9] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 9] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 9] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 9] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 9] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 9] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 9] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 19] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 19] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 19] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 19] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 19] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 19] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 19] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 29] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 29] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 29] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 29] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 29] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 29] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 29] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 39] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 39] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 39] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 39] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 39] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 39] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 39] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 49] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 49] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 49] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 49] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 49] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 49] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 49] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 59] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 59] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 59] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 59] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 59] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 59] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 59] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 69] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 69] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 69] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 69] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 69] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 69] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 69] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 79] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 79] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 79] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 79] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 79] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 79] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 79] = endYear;
-                } else if (safeStartDaysArr[roomNumberReserve + 89] == 0) {
-                    safeStartDaysArr[roomNumberReserve + 89] = startDate;
-                    safeStartMonthsArr[roomNumberReserve + 89] = startMonth;
-                    safeStartYearsArr[roomNumberReserve + 89] = startYear;
-                    safeEndDaysArr[roomNumberReserve + 89] = endDate;
-                    safeEndMonthsArr[roomNumberReserve + 89] = endMonth;
-                    safeEndYearsArr[roomNumberReserve + 89] = endYear;
+            } else {
+                boolean execute = false;
+                for (int i = -1; i < 90; i += 10) {
+                    execute = safeStartDaysArr[roomNumberReserve - 1] == 0 || i == 9;
+                    if (execute) {
+                        safeStartDaysArr[roomNumberReserve + i] = startDate;
+                        safeStartMonthsArr[roomNumberReserve + i] = startMonth;
+                        safeStartYearsArr[roomNumberReserve + i] = startYear;
+                        safeEndDaysArr[roomNumberReserve + i] = endDate;
+                        safeEndMonthsArr[roomNumberReserve + i] = endMonth;
+                        safeEndYearsArr[roomNumberReserve + i] = endYear;
+                        break;
+                    }
                 }
+                System.out.println("The start day is: " + startDate + "/" + startMonth + "/" + startYear + "   12:00h.");
+                System.out.println("The end day is: " + endDate + "/" + endMonth + "/" + endYear + "   12:00h.");
+                System.out.println("Enter some information about the user: ");
+                String information = scan.nextLine();
+                information = scan.nextLine();
+                System.out.println("Room No:" + roomNumberReserve + " is successfully reserved");
             }
-            System.out.println("The start day is: " + startDate + "/" + startMonth + "/" + startYear + "   12:00h.");
-            System.out.println("The end day is: " + endDate + "/" + endMonth + "/" + endYear + "   12:00h.");
-            System.out.println("Enter some information about the user: ");
-            String information = scan.nextLine();
-            information = scan.nextLine();
-            System.out.println("Room No:" + roomNumberReserve + " is successfully reserved");
-        } else {
-            System.out.println("================================================");
-            System.out.println("  INVALID DATE INPUT!");
-            System.out.println("This room is already reserved on this dates!");
-            System.out.println("================================================");
         }
     }
 
