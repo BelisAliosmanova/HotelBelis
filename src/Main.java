@@ -3,6 +3,7 @@ import java.text.SimpleDateFormat;
 import java.util.Scanner;
 import java.util.Date;
 import java.util.ArrayList;
+
 public class Main {
     static String[] arrRooms = new String[10];
     static int[] safeStartDaysArr = new int[100];
